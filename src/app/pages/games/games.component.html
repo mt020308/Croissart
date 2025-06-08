@@ -1,0 +1,33 @@
+<div class="games-page">
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Nossos Jogos</h1>
+      <p class="page-subtitle">Explore nosso portfólio de experiências únicas e envolventes</p>
+    </div>
+  </div>
+
+  <div class="games-content">
+    <div class="container">
+      <div class="games-grid">
+        <div class="game-card" *ngFor="let game of games" (click)="navigateToGame(game.id)">
+          <div class="game-image">
+            <img [src]="game.coverImage" [alt]="game.title" *ngIf="game.coverImage">
+            <div class="game-overlay">
+              <div class="game-info">
+                <h3 class="game-title">{{ game.title }}</h3>
+                <p class="game-description">{{ game.shortDescription }}</p>
+                <div class="game-meta">
+                  <span class="game-status" [ngClass]="game.status.toLowerCase()">{{ game.status }}</span>
+                  <span class="game-genre">{{ game.genre }}</span>
+                </div>
+                <div class="game-platforms">
+                  <span class="platform" *ngFor="let platform of game.platforms">{{ platform }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

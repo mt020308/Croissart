@@ -1,0 +1,179 @@
+.games-page {
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.page-header {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #64ffda;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.games-content {
+  padding: 5rem 0;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+}
+
+.game-card {
+  position: relative;
+  height: 350px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #1a1a1a;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.05);
+}
+
+.game-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.95));
+  padding: 3rem 2rem 2rem;
+  transform: translateY(50%);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-overlay {
+  transform: translateY(0);
+}
+
+.game-info {
+  color: #fff;
+}
+
+.game-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #64ffda;
+}
+
+.game-description {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.game-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.game-status, .game-genre {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.game-status {
+  &.em-desenvolvimento {
+    background: #64ffda;
+    color: #0a0a0a;
+  }
+
+  &.lancado {
+    background: #4caf50;
+    color: #fff;
+  }
+
+  &.em-breve {
+    background: #ff9800;
+    color: #fff;
+  }
+}
+
+.game-genre {
+  background: #333;
+  color: #64ffda;
+}
+
+.game-platforms {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  .platform {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .game-card {
+    height: 300px;
+  }
+
+  .game-overlay {
+    transform: translateY(0);
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  }
+}

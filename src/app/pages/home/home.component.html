@@ -1,0 +1,59 @@
+<div class="home-page">
+  
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Criadores de Experiências Únicas</h1>
+      <p class="hero-subtitle">Croissart é um estúdio indie brasileiro dedicado a criar jogos que tocam a alma e despertam emoções profundas.</p>
+      <div class="hero-buttons">
+        <a routerLink="/games" class="btn btn-primary">Nossos Jogos</a>
+        <a routerLink="/about" class="btn btn-secondary">Conheça-nos</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  
+  <section class="latest-news">
+    <div class="container">
+      <h2 class="section-title">Últimas Notícias!</h2>
+      <div class="news-grid">
+        <article class="news-card featured" *ngFor="let article of featuredNews">
+          <div class="news-image" *ngIf="article.image">
+            <img [src]="article.image" [alt]="article.title">
+          </div>
+          <div class="news-content">
+            <span class="news-date">{{ article.date | date:'dd \'de\' MMMM, y':'pt-BR' }}</span>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt }}</p>
+            <a [routerLink]="['/news', article.id]" class="read-more">Leia Mais</a>
+          </div>
+        </article>
+      </div>
+      <a routerLink="/news" class="view-more-btn">Ver Mais Notícias</a>
+    </div>
+  </section>
+
+  
+  <section class="featured-games">
+    <div class="container">
+      <h2 class="section-title">Nossos Jogos</h2>
+      <div class="games-grid">
+        <div class="game-card" *ngFor="let game of games" (click)="navigateToGame(game.id)">
+          <div class="game-image">
+            <img [src]="game.coverImage" [alt]="game.title" *ngIf="game.coverImage">
+            <div class="game-overlay">
+              <h3>{{ game.title }}</h3>
+              <p>{{ game.shortDescription }}</p>
+              <span class="game-status" [ngClass]="game.status.toLowerCase()">{{ game.status }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,116 @@
+<div class="game-detail" *ngIf="game">
+  <!-- Hero Banner -->
+  <section class="game-hero">
+    <div class="hero-image">
+      <img [src]="game.bannerImage" [alt]="game.title" *ngIf="game.bannerImage">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="game-title">{{ game.title }}</h1>
+        <p class="game-tagline">{{ game.tagline }}</p>
+        <div class="game-meta">
+          <span class="game-status" [ngClass]="game.status.toLowerCase()">{{ game.status }}</span>
+          <span class="game-genre">{{ game.genre }}</span>
+          <span class="game-platform" *ngFor="let platform of game.platforms">{{ platform }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game Description -->
+  <section class="game-description">
+    <div class="container">
+      <div class="description-content">
+        <h2>{{ game.subtitle }}</h2>
+        <p class="main-description">{{ game.fullDescription }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game Features -->
+  <section class="game-features" *ngIf="game.features && game.features.length > 0">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature" *ngFor="let feature of game.features">
+          <div class="feature-icon" *ngIf="feature.icon">
+            <img [src]="feature.icon" [alt]="feature.title">
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot Gallery -->
+  <section class="screenshot-gallery" *ngIf="game.screenshots && game.screenshots.length > 0">
+    <div class="container">
+      <h2 class="section-title">Galeria</h2>
+      <div class="gallery-grid">
+        <div class="screenshot" *ngFor="let screenshot of game.screenshots; let i = index" 
+             (click)="openLightbox(i)">
+          <img [src]="screenshot.thumbnail || screenshot.url" [alt]="screenshot.caption">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Progress -->
+  <section class="development-progress" *ngIf="game.developmentUpdates && game.developmentUpdates.length > 0">
+    <div class="container">
+      <h2 class="section-title">Progresso do Desenvolvimento</h2>
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let update of game.developmentUpdates">
+          <div class="timeline-date">{{ update.date | date:'MMM yyyy':'pt-BR' }}</div>
+          <div class="timeline-content">
+            <h4>{{ update.title }}</h4>
+            <p>{{ update.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music Section -->
+  <section class="game-music" *ngIf="game.musicInfo">
+    <div class="container">
+      <h2 class="section-title">Trilha Sonora</h2>
+      <div class="music-content">
+        <p>{{ game.musicInfo.description }}</p>
+        <div class="composer-info" *ngIf="game.musicInfo.composer">
+          <strong>Compositor:</strong> {{ game.musicInfo.composer }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Kit -->
+  <section class="press-kit" *ngIf="game.pressKit">
+    <div class="container">
+      <h2 class="section-title">Kit de Imprensa</h2>
+      <p>Se você gostaria de escrever sobre {{ game.title }}, temos um Kit de Imprensa completo com vídeos, fatos e imagens.</p>
+      <div class="press-links">
+        <a [href]="game.pressKit.downloadUrl" class="btn btn-primary" *ngIf="game.pressKit.downloadUrl">
+          Download do Press Kit
+        </a>
+        <p class="press-contact" *ngIf="game.pressKit.contactEmail">
+          Para consultas adicionais de imprensa, entre em contato: 
+          <a [href]="'mailto:' + game.pressKit.contactEmail">{{ game.pressKit.contactEmail }}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" *ngIf="lightboxOpen" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="lightbox-close" (click)="closeLightbox()">&times;</button>
+    <img [src]="currentScreenshot?.url" [alt]="currentScreenshot?.caption" *ngIf="currentScreenshot">
+    <div class="lightbox-nav">
+      <button class="nav-btn prev" (click)="previousScreenshot()" *ngIf="game && game.screenshots && game.screenshots.length > 1">❮</button>
+      <button class="nav-btn next" (click)="nextScreenshot()" *ngIf="game && game.screenshots && game.screenshots.length > 1">❯</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="news-detail-page" *ngIf="article">
+  <div class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="article-date">{{ article.date | date:'dd \'de\' MMMM, y':'pt-BR' }}</span>
+        <span class="article-category">{{ getCategoryName(article.tags[0]) }}</span>
+      </div>
+      <h1 class="article-title">{{ article.title }}</h1>
+      <div class="article-author">
+        <span>Por {{ article.author }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-content">
+    <div class="container">
+      <div class="article-image" *ngIf="article.image">
+        <img [src]="article.image" [alt]="article.title">
+      </div>
+      
+      <div class="article-text" [innerHTML]="article.content"></div>
+      
+      <div class="article-footer">
+        <div class="article-tags">
+          <span *ngFor="let tag of article.tags" class="tag">{{ getCategoryName(tag) }}</span>
+        </div>
+        <div class="article-share">
+          <span>Compartilhar:</span>
+          <a href="#" class="share-link twitter">Twitter</a>
+          <a href="#" class="share-link facebook">Facebook</a>
+          <a href="#" class="share-link linkedin">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-articles" *ngIf="relatedArticles.length > 0">
+    <div class="container">
+      <h2 class="section-title">Notícias Relacionadas</h2>
+      <div class="related-grid">
+        <div class="related-card" *ngFor="let related of relatedArticles" (click)="navigateToArticle(related.id)">
+          <div class="related-image" *ngIf="related.image">
+            <img [src]="related.image" [alt]="related.title">
+          </div>
+          <div class="related-content">
+            <h3>{{ related.title }}</h3>
+            <p>{{ related.excerpt }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
