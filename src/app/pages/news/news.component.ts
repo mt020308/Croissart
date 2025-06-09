@@ -1,14 +1,14 @@
+import { NewsArticle } from './../../models/news/news.module';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewsService } from '../../services/news.service';
-import { NewsArticle } from '../../models/news/news.module';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css']
 })
@@ -20,7 +20,10 @@ export class NewsComponent implements OnInit {
   itemsPerPage = 6;
   totalPages = 1;
 
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.allNews = this.newsService.getAllNews();

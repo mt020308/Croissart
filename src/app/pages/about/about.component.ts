@@ -24,28 +24,28 @@ interface Value {
 export class AboutComponent implements OnInit {
   teamMembers: TeamMember[] = [
     {
-      name: 'Ana Silva',
-      role: 'Fundadora & Game Designer',
-      bio: 'Apaixonada por narrativas interativas e mecânicas inovadoras, Ana lidera a visão criativa da Croissart.',
-      photo: '/assets/images/team/ana-silva.jpg'
+      name: 'Matheus Henrique',
+      role: 'Fundador & Game Designer & Desenvolvedor Principal',
+      bio: 'Apaixonado por narrativas interativas e mecânicas inovadoras, Matheus lidera a visão criativa da Croissart.',
+      photo: "matheus.png"
     },
     {
-      name: 'Carlos Mendes',
-      role: 'Desenvolvedor Principal',
-      bio: 'Com mais de 8 anos de experiência em desenvolvimento, Carlos transforma ideias em realidade digital.',
-      photo: '/assets/images/team/carlos-mendes.jpg'
+      name: 'Eric Alves',
+      role: 'Desenvolvedor & Compositor & Sound Designer',
+      bio: '',
+      photo: 'eric2.jpg'
     },
     {
-      name: 'Beatriz Santos',
-      role: 'Artist Director',
-      bio: 'Responsável pela identidade visual única dos nossos jogos, Beatriz cria mundos visualmente deslumbrantes.',
-      photo: '/assets/images/team/beatriz-santos.jpg'
+      name: 'Vitor Fortunato',
+      role: 'Diretor Artístico & Designer',
+      bio: 'Responsável pela identidade visual única dos nossos jogos, Vitor cria mundos visualmente deslumbrantes.',
+      photo: 'vitor.png'
     },
     {
-      name: 'Daniel Costa',
-      role: 'Compositor & Sound Designer',
-      bio: 'Daniel cria as trilhas sonoras e efeitos que dão vida e emoção aos nossos jogos.',
-      photo: '/assets/images/team/daniel-costa.jpg'
+      name: 'Bruno Eduardo',
+      role: 'Engenheiro Sonoro & Designewr UX/UI',
+      bio: 'Bruno cria interfaces e efeitos que dão vida e emoção aos nossos jogos.',
+      photo: 'bruno.png'
     }
   ];
 
