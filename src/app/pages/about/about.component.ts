@@ -32,7 +32,7 @@ export class AboutComponent implements OnInit {
     {
       name: 'Eric Alves',
       role: 'Desenvolvedor & Compositor & Sound Designer',
-      bio: '',
+      bio: 'O compositor da equipe, Eric cria incríveis e imersivas músicas para os nossos jogos.',
       photo: 'eric2.jpg'
     },
     {
@@ -43,7 +43,7 @@ export class AboutComponent implements OnInit {
     },
     {
       name: 'Bruno Eduardo',
-      role: 'Engenheiro Sonoro & Designewr UX/UI',
+      role: 'Engenheiro Sonoro & Designer UX/UI',
       bio: 'Bruno cria interfaces e efeitos que dão vida e emoção aos nossos jogos.',
       photo: 'bruno.png'
     }

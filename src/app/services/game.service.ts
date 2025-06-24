@@ -32,7 +32,7 @@ export class GameService {
         },
         {
           title: 'Puzzles imersivos',
-          description: 'Os puzzles te prendem no jogo, tanto para descobrir sobre a história do jogo, quanto para resolvê-los.',
+          description: 'Os puzzles te prendem no jogo, tanto pela vontade de descobrir a história quanto pelo desafio de resolvê-los.',
           icon: ''
         },
         {
