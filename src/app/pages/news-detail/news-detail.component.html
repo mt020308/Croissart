@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-
+  
   <div class="article-content">
     <div class="container">
       <div class="article-image" *ngIf="article.image">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-
+  
   <div class="related-articles" *ngIf="relatedArticles.length > 0">
     <div class="container">
       <h2 class="section-title">Notícias Relacionadas</h2>
@@ -50,4 +50,31 @@
       </div>
     </div>
   </div>
+
+  <section class="comments-section">
+    <h2 class="section-title">Comentários ({{ article.comments ? article.comments.length : 0 }})</h2>
+    
+    <div class="comment-form" *ngIf="authService.isLoggedIn()">
+      <textarea [(ngModel)]="newComment" placeholder="Adicione um comentário..." rows="3"></textarea>
+      <button (click)="addComment()" [disabled]="!newComment.trim()">Enviar</button>
+    </div>
+    
+    <div class="login-prompt" *ngIf="!authService.isLoggedIn()">
+      <p>Faça <a routerLink="/login">login</a> para comentar</p>
+    </div>
+    
+    <div class="comments-list" *ngIf="article.comments && article.comments.length > 0">
+      <div class="comment" *ngFor="let comment of article.comments">
+        <div class="comment-header">
+          <span class="comment-author">{{ comment.author }}</span>
+          <span class="comment-date">{{ comment.date | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <div class="comment-content">{{ comment.content }}</div>
+      </div>
+    </div>
+    
+    <p class="no-comments" *ngIf="!article.comments || article.comments.length === 0">
+      Nenhum comentário ainda. Seja o primeiro a comentar!
+    </p>
+  </section>
 </div>

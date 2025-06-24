@@ -1,0 +1,39 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1 class="auth-title">Cadastro</h1>
+    
+    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" id="name" formControlName="name" placeholder="Seu nome completo">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" placeholder="seu@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" formControlName="password" placeholder="••••••••">
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">Confirme sua senha</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="••••••••">
+      </div>
+      
+      <button type="submit" class="auth-button" [disabled]="!registerForm.valid">
+        Cadastrar
+      </button>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </form>
+    
+    <div class="auth-footer">
+      <p>Já tem uma conta? <a routerLink="/login" class="auth-link">Faça login</a></p>
+    </div>
+  </div>
+</div>

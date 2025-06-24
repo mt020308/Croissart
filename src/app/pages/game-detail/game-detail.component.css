@@ -77,7 +77,7 @@
 
 .game-status {
   &.em-desenvolvimento {
-    background: #64ffda;
+    background: #e2b530;
     color: #0a0a0a;
   }
 
@@ -94,7 +94,7 @@
 
 .game-genre {
   background: #333;
-  color: #64ffda;
+  color: #e2b530;
 }
 
 .game-platform {
@@ -116,7 +116,7 @@
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 2rem;
-    color: #64ffda;
+    color: #e2b530;
   }
 
   .main-description {
@@ -155,7 +155,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #64ffda;
+    background: #e2b530;
     border-radius: 50%;
 
     img {
@@ -167,7 +167,7 @@
   h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #64ffda;
+    color: #e2b530;
   }
 
   p {
@@ -186,7 +186,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: #64ffda;
+  color: #e2b530;
 }
 
 .gallery-grid {
@@ -231,7 +231,7 @@
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: #64ffda;
+    background: #e2b530;
   }
 }
 
@@ -263,7 +263,7 @@
     transform: translateX(-50%);
     width: 12px;
     height: 12px;
-    background: #64ffda;
+    background: #e2b530;
     border-radius: 50%;
     z-index: 2;
   }
@@ -274,7 +274,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #64ffda;
+  color: #e2b530;
   font-weight: 600;
 }
 
@@ -315,7 +315,7 @@
 
   .composer-info {
     font-size: 1.1rem;
-    color: #64ffda;
+    color: #e2b530;
   }
 }
 
@@ -339,11 +339,11 @@
     display: inline-block;
 
     &.btn-primary {
-      background: #64ffda;
+      background: #e2b530;
       color: #0a0a0a;
 
       &:hover {
-        background: #4fd3b0;
+        background: #e2b530;
         transform: translateY(-2px);
       }
     }
@@ -354,7 +354,7 @@
     color: #ccc;
 
     a {
-      color: #64ffda;
+      color: #e2b530;
       text-decoration: none;
     }
   }

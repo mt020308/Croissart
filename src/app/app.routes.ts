@@ -22,8 +22,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/news/news.component').then(m => m.NewsComponent)
   },
   {
+    path: 'news/:id', 
+    loadComponent: () => import('./pages/news-detail/news-detail.component').then(m => m.NewsDetailComponent)
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent)
+  },
+  { 
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
+  },
+  { 
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent)
   },
   {
     path: '**',

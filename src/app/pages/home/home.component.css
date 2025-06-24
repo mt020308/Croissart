@@ -81,22 +81,22 @@
   display: inline-block;
 
   &.btn-primary {
-    background: #64ffda;
+    background: #e2b530;
     color: #0a0a0a;
 
     &:hover {
-      background: #4fd3b0;
+      background: #e2b530;
       transform: translateY(-2px);
     }
   }
 
   &.btn-secondary {
     background: transparent;
-    color: #64ffda;
-    border: 2px solid #64ffda;
+    color: #e2b530;
+    border: 2px solid #e2b530;
 
     &:hover {
-      background: #64ffda;
+      background: #e2b530;
       color: #0a0a0a;
       transform: translateY(-2px);
     }
@@ -115,7 +115,7 @@
 .scroll-arrow {
   width: 24px;
   height: 24px;
-  border: 2px solid #64ffda;
+  border: 2px solid #e2b530;
   border-left: none;
   border-top: none;
   transform: rotate(45deg);
@@ -160,7 +160,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: #64ffda;
+  color: #e2b530;
 }
 
 .news-grid {
@@ -207,7 +207,7 @@
   padding: 1.5rem;
 
   .news-date {
-    color: #64ffda;
+    color: #e2b530;
     font-size: 0.9rem;
     font-weight: 500;
   }
@@ -224,7 +224,7 @@
   }
 
   .read-more {
-    color: #64ffda;
+    color: #e2b530;
     text-decoration: none;
     font-weight: 500;
   }
@@ -233,7 +233,7 @@
 .view-more-btn {
   display: block;
   text-align: center;
-  color: #64ffda;
+  color: #e2b530;
   text-decoration: none;
   font-weight: 600;
   margin-top: 2rem;
@@ -303,7 +303,7 @@
   font-weight: 600;
 
   &.em-desenvolvimento {
-    background: #64ffda;
+    background: #e2b530;
     color: #0a0a0a;
   }
 

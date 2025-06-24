@@ -48,7 +48,7 @@ export class GameService {
           description: 'O dia que começamos a fazer o jogo, usando a Unreal Engine 5.'
         },
         {
-          date: new Date('2025-05-31'),
+          date: new Date('2025-06-09'),
           title: 'Protótipos',
           description: 'Criação dos 1° protótipos de modelos do jogo, incluindo personagens e cenários.'
         }

@@ -47,6 +47,7 @@
   gap: 2rem;
   margin: 0;
   padding: 0;
+  margin-right: 1rem;
 
   .nav-link {
     color: #ccc;
@@ -57,7 +58,7 @@
 
     &:hover,
     &.active {
-      color: #64ffda;
+      color: #e2b530;
     }
 
     &::after {
@@ -67,7 +68,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #64ffda;
+      background: #e2b530;
       transition: width 0.3s ease;
     }
 
@@ -119,6 +120,7 @@
     text-align: center;
     transition: 0.3s;
     padding: 2rem 0;
+    margin-right: 0;
 
     &.active {
       left: 0;
@@ -127,5 +129,47 @@
     li {
       margin: 1rem 0;
     }
+  }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    padding-right: 0;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 0;
+    order: 3;
+  }
+}
+
+.auth-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: rgba(100, 255, 218, 0.1);
+  color: #e2b530;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  
+  &:hover {
+    background: rgba(242, 154, 38, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
   }
 }

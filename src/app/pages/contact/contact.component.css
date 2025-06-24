@@ -35,7 +35,7 @@
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #64ffda;
+  color: #e2b530;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
@@ -77,7 +77,7 @@
 .section-title {
   font-size: 1.8rem;
   margin-bottom: 2rem;
-  color: #64ffda;
+  color: #e2b530;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -94,7 +94,7 @@
   align-items: flex-start;
   
   .info-icon {
-    color: #64ffda;
+    color: #e2b530;
     flex-shrink: 0;
     margin-top: 0.2rem;
   }
@@ -116,7 +116,7 @@
       transition: color 0.3s ease;
       
       &:hover {
-        color: #64ffda;
+        color: #e2b530;
       }
     }
   }
@@ -135,7 +135,7 @@
     height: 40px;
     border-radius: 50%;
     background: rgba(100, 255, 218, 0.1);
-    color: #64ffda;
+    color: #e2b530;
     transition: all 0.3s ease;
     
     &:hover {
@@ -172,7 +172,7 @@
     
     &:focus {
       outline: none;
-      border-color: #64ffda;
+      border-color: #e2b530;
       box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
     }
     
@@ -201,7 +201,7 @@
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: #64ffda;
+  background: #e2b530;
   color: #0a0a0a;
   border: none;
   border-radius: 6px;
@@ -214,7 +214,7 @@
   gap: 0.5rem;
   
   &:hover:not(:disabled) {
-    background: #4fd3b0;
+    background: #e2b530;
     transform: translateY(-2px);
   }
   
