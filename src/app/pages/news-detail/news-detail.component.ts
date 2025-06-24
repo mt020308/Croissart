@@ -22,6 +22,7 @@ export class NewsDetailComponent implements OnInit {
   editCommentText = '';
   relatedArticles: NewsArticle[] = [];
   
+  
   authService = {
     isLoggedIn: () => true, 
     getUserName: () => 'Usuário Teste',

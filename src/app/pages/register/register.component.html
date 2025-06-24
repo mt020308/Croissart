@@ -6,29 +6,50 @@
       <div class="form-group">
         <label for="name">Nome</label>
         <input type="text" id="name" formControlName="name" placeholder="Seu nome completo">
+        <div *ngIf="name?.invalid && name?.touched" class="field-error">
+          Nome é obrigatório
+        </div>
       </div>
       
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" formControlName="email" placeholder="seu@email.com">
+        <div *ngIf="email?.invalid && email?.touched" class="field-error">
+          <span *ngIf="email?.errors?.['required']">Email é obrigatório</span>
+          <span *ngIf="email?.errors?.['email']">Email deve ter um formato válido</span>
+        </div>
       </div>
       
       <div class="form-group">
         <label for="password">Senha</label>
         <input type="password" id="password" formControlName="password" placeholder="••••••••">
+        <div *ngIf="password?.invalid && password?.touched" class="field-error">
+          <span *ngIf="password?.errors?.['required']">Senha é obrigatória</span>
+          <span *ngIf="password?.errors?.['minlength']">Senha deve ter pelo menos 6 caracteres</span>
+        </div>
       </div>
       
       <div class="form-group">
         <label for="confirmPassword">Confirme sua senha</label>
         <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="••••••••">
+        <div *ngIf="confirmPassword?.invalid && confirmPassword?.touched" class="field-error">
+          Confirmação de senha é obrigatória
+        </div>
+        <div *ngIf="registerForm.errors?.['mismatch'] && confirmPassword?.touched" class="field-error">
+          As senhas não coincidem
+        </div>
       </div>
       
-      <button type="submit" class="auth-button" [disabled]="!registerForm.valid">
-        Cadastrar
+      <button type="submit" class="auth-button" [disabled]="!registerForm.valid || isLoading">
+        {{ isLoading ? 'Cadastrando...' : 'Cadastrar' }}
       </button>
 
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
+      </div>
+
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
       </div>
     </form>
     

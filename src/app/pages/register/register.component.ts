@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -14,45 +14,93 @@ export class RegisterComponent {
   registerForm: FormGroup;
   isLoading = false;
   errorMessage: string | null = null;
-  authService: any;
+  successMessage: string | null = null;
+
+  private mockAuthService = {
+    register: (name: string, email: string, password: string): boolean => {
+      try {
+        const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+        
+        if (existingUsers.find((user: any) => user.email === email)) {
+          return false; 
+        }
+
+        const newUser = {
+          id: Date.now().toString(),
+          name,
+          email,
+          password 
+        };
+
+        existingUsers.push(newUser);
+        localStorage.setItem('users', JSON.stringify(existingUsers));
+        
+        localStorage.setItem('user', JSON.stringify({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          isLoggedIn: true
+        }));
+
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+  };
 
   constructor(
     private fb: FormBuilder,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
-    }, { validator: this.passwordMatchValidator });
+    }, { 
+      validators: this.passwordMatchValidator 
+    });
   }
 
-  passwordMatchValidator(formGroup: FormGroup) {
-    const password = formGroup.get('password')?.value;
-    const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { mismatch: true };
+  passwordMatchValidator(control: AbstractControl): {[key: string]: any} | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+    
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+      return { mismatch: true };
+    }
+    
+    return null;
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
       this.isLoading = true;
       this.errorMessage = null;
+      this.successMessage = null;
       
       const { name, email, password } = this.registerForm.value;
       
-      // Simulação de registro (substitua por chamada real à API)
       setTimeout(() => {
-        const success = this.authService.register(name, email, password);
+        const success = this.mockAuthService.register(name, email, password);
         
         if (success) {
-          this.router.navigate(['/']);
+          this.successMessage = 'Conta criada com sucesso! Redirecionando...';
+          
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2000);
         } else {
-          this.errorMessage = 'Erro ao criar conta. Tente novamente.';
+          this.errorMessage = 'Este email já está cadastrado. Tente outro email.';
         }
         
         this.isLoading = false;
       }, 1500);
+    } else {
+      Object.keys(this.registerForm.controls).forEach(key => {
+        this.registerForm.get(key)?.markAsTouched();
+      });
     }
   }
 

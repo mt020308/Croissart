@@ -13,8 +13,8 @@
         <input type="password" id="password" formControlName="password" placeholder="••••••••">
       </div>
       
-      <button type="submit" class="auth-button" [disabled]="!loginForm.valid">
-        Entrar
+      <button type="submit" class="auth-button" [disabled]="!loginForm.valid || isLoading">
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
       </button>
 
       <div *ngIf="errorMessage" class="error-message">

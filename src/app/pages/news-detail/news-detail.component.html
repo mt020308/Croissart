@@ -68,8 +68,19 @@
         <div class="comment-header">
           <span class="comment-author">{{ comment.author }}</span>
           <span class="comment-date">{{ comment.date | date:'dd/MM/yyyy HH:mm' }}</span>
+          <div class="comment-actions" *ngIf="canEditComment(comment)">
+            <button class="edit-btn" (click)="startEditComment(comment)">Editar</button>
+            <button class="delete-btn" (click)="deleteComment(comment.id)">Excluir</button>
+          </div>
         </div>
-        <div class="comment-content">{{ comment.content }}</div>
+        <div class="comment-content" *ngIf="editingCommentId !== comment.id">{{ comment.content }}</div>
+        <div *ngIf="editingCommentId === comment.id" class="edit-comment-form">
+          <textarea [(ngModel)]="editCommentText" class="edit-comment-textarea"></textarea>
+          <div class="edit-buttons">
+            <button class="save-btn" (click)="saveEditComment()">Salvar</button>
+            <button class="cancel-btn" (click)="cancelEditComment()">Cancelar</button>
+          </div>
+        </div>
       </div>
     </div>
     

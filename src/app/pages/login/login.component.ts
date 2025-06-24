@@ -14,7 +14,21 @@ export class LoginComponent {
   loginForm: FormGroup;
   isLoading = false;
   errorMessage: string | null = null;
-  authService: any;
+
+  private mockAuthService = {
+    login: (email: string, password: string): boolean => {
+      if (email === 'admin@teste.com' && password === '123456') {
+        localStorage.setItem('user', JSON.stringify({
+          id: '1',
+          name: 'Admin',
+          email: email,
+          isLoggedIn: true
+        }));
+        return true;
+      }
+      return false;
+    }
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -33,18 +47,21 @@ export class LoginComponent {
       
       const { email, password } = this.loginForm.value;
       
-      // Simulação de login (substitua por chamada real à API)
       setTimeout(() => {
-        const success = this.authService.login(email, password);
+        const success = this.mockAuthService.login(email, password);
         
         if (success) {
           this.router.navigate(['/']);
         } else {
-          this.errorMessage = 'Email ou senha incorretos';
+          this.errorMessage = 'Email ou senha incorretos. Tente: admin@teste.com / 123456';
         }
         
         this.isLoading = false;
       }, 1500);
+    } else {
+      Object.keys(this.loginForm.controls).forEach(key => {
+        this.loginForm.get(key)?.markAsTouched();
+      });
     }
   }
 
