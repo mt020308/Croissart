@@ -6,11 +6,11 @@ import { NewsArticle } from '../models/news/news.module';
 export class NewsService {
   private news: NewsArticle[] = [
     {
-      id: 'ecos-newGame',
-      title: 'O nosso 1° projeto',
-      excerpt: 'O começo do desenvolvimento do jogo: Ecos da Solidão',
-      content: '<p>Estamos animados em anunciar que <strong>Ecos da Solidão</strong> está em desenvolvimento!</p><p>Nosso primeiro projeto de jogo, uma simples ideia que surgiu numa madrugada agora se tornando realidade! Venha acompanhar o desenvolveimento desse jogo!</p>',
-      date: new Date('2025-04-05'),
+      id: 'booreau-newGame',
+      title: 'Nosso novo projeto',
+      excerpt: 'O início do desenvolvimento de BOOreau of Investigation',
+      content: '<p>Estamos muito empolgados em anunciar que <strong>BOOreau of Investigation</strong> entrou oficialmente em desenvolvimento!</p><p>Esse é o nosso novo projeto: um jogo de investigação cômica onde você controla um detetive fantasmagórico capaz de possuir NPCs caricatos para resolver um misterioso assassinato. O que começou como uma ideia divertida agora está se tornando realidade, e mal podemos esperar para compartilhar cada etapa com vocês!</p>',
+      date: new Date('2025-06-13'),
       author: 'Matheus Henrique',
       image: '',
       featured: true,
@@ -42,13 +42,4 @@ export class NewsService {
   getNewsByTag(tag: string): NewsArticle[] {
     return this.getAllNews().filter(article => article.tags.includes(tag));
   }
-  
-  addCommentToArticle(articleId: string, comment: Comment): NewsArticle | null {
-  const article = this.getNewsById(articleId);
-  if (article) {
-    return article;
-  }
-  return null;
-  } 
-  
 }
