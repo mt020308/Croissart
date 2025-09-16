@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { NewsArticle } from '../models/news/news.module';
-import { Comment } from '../models/comment/comment.module';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,14 +15,6 @@ export class NewsService {
       image: '',
       featured: true,
       tags: ['newGame', 'devlog'],
-      comments: [
-        {
-        id: '1',
-        author: 'Usuário Exemplo',
-        content: 'Este é um comentário de exemplo!',
-        date: new Date('2023-05-15')
-        }
-      ]
     }
   ];
 
@@ -39,9 +30,6 @@ export class NewsService {
 
   getNewsById(id: string): NewsArticle | undefined {
   const article = this.news.find(article => article.id === id);
-  if (article && !article.comments) {
-    article.comments = [];
-  }
   return article;
   }
 
@@ -58,7 +46,6 @@ export class NewsService {
   addCommentToArticle(articleId: string, comment: Comment): NewsArticle | null {
   const article = this.getNewsById(articleId);
   if (article) {
-    article.comments.unshift(comment);
     return article;
   }
   return null;
