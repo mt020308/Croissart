@@ -16,14 +16,6 @@ import { RouterModule } from '@angular/router';
 export class NewsDetailComponent implements OnInit {
   article: NewsArticle | null = null;
   relatedArticles: NewsArticle[] = [];
-  
-  
-  authService = {
-    isLoggedIn: () => true, 
-    getUserName: () => 'Usuário Teste',
-    getUserId: () => '1',
-    isAdminUser: () => false
-  };
 
   constructor(
     private route: ActivatedRoute,
@@ -62,4 +54,35 @@ export class NewsDetailComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  // ===============================
+  // 🔗 MÉTODOS DE COMPARTILHAMENTO
+  // ===============================
+
+  shareWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Confira esta notícia: ${this.article?.title}`);
+    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+  }
+
+  shareX() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Confira esta notícia: ${this.article?.title}`);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  }
+
+  async shareNative() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: this.article?.title,
+          text: 'Confira esta notícia!',
+          url: window.location.href
+        });
+      } catch (err) {
+        console.log('Compartilhamento cancelado', err);
+      }
+    } else {
+      alert('O compartilhamento nativo não é suportado neste dispositivo.');
+    }
+  }
 }
