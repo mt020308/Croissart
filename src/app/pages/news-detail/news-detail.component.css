@@ -3,6 +3,7 @@
   color: #fff;
   min-height: 100vh;
   padding-top: 80px;
+  overflow-x: hidden;
 }
 
 .article-header {
@@ -327,4 +328,36 @@ button:disabled {
 
 .article-share .native:hover {
   background: #584ef5;
+}
+
+.article-text img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.article-text img,
+.article-text iframe,
+.article-text video {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+body {
+  overflow-x: hidden;
 }
