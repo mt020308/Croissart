@@ -45,7 +45,7 @@ export class AboutComponent implements OnInit {
       name: 'Bruno Eduardo',
       role: 'Engenheiro Sonoro & Designer UX/UI',
       bio: 'Bruno cria interfaces e efeitos que dão vida e emoção aos nossos jogos.',
-      photo: 'bruno.png'
+      photo: 'bruno.jpeg'
     }
   ];
 
